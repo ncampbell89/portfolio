@@ -1,0 +1,37 @@
+body {
+  background-color: #63cc26;
+}
+
+.quote {
+  background-color: #ffffff;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px 20px 40px 20px;
+  width: 50%;
+}
+
+#message {
+  font-size: 30px;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  color: #63cc26;
+}
+
+span {
+  font-size: 12pt;
+}
+
+button {
+  background-color: #63cc26;
+  color: #fff;
+  font-size: 14pt;
+  padding: 10px;
+  border: 0px;
+  margin: 0 auto;
+  position: relative;
+  left: 260px;
+}
+
+button:hover {
+  background-color: #63cc2666;
+}
