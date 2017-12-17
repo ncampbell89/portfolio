@@ -8,7 +8,7 @@ $(document).ready(function () {
     		}
     	};
     };
-    xhttps.open("GET", "Desktop/My_web_portfolio/quotes.xml", true);
+    xhttps.open("GET", "quotes.xml", true);
     xhttps.send();
   });
 });
