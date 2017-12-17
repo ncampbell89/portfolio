@@ -1,4 +1,12 @@
-$(document).ready(function () {
+$(document).ready(function() {
+    $('#newQuote').on('click', function() {
+        $.getJSON("quotes.txt", function(json) {
+            $('#message').html(JSON.stringify(json));
+        });
+    });
+});
+
+/*$(document).ready(function () {
   $('#newQuote').on('click', function () {
     var xhttp = new XMLHttpRequest();
     xhttp.onstatereadychange = function() {
@@ -11,5 +19,5 @@ $(document).ready(function () {
     xhttp.open("GET", "quotes.xml", true);
     xhttp.send();
   });
-});
+});*/
 
