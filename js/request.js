@@ -6,7 +6,7 @@ public static string GetAntiXsrfToken() {
         HttpOnly = true,
         Value = cookieToken
     };
-    if(FormsAuthentication.RequireSSL && HttpContext.Current.Request.IsSecureConnecti     on)
+    if(FormsAuthentication.RequireSSL && HttpContext.Current.Request.IsSecureConnection)
     {
         responseCookie.Secure = true;
     }
@@ -31,7 +31,7 @@ static void ValidateAntiXsrfToken() {
             catch
             {
                 HttpContext.Current.Response.Clear();
-                HttpContext.Current.Response.StatusCode = 404;
+                HttpContext.Current.Response.StatusCode = 403;
                 HttpContext.Current.Response.End();
             }
 }
