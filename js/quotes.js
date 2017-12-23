@@ -8,7 +8,7 @@ $(document).ready(function () {
     		}
     	};
     };
-    xhttp.open("GET", "../quotes.xml", true);
+    xhttp.open("GET", "../quotes.txt", true);
     xhttp.send();
   });
 });
