@@ -9,7 +9,7 @@ $(document).ready(function () {
     	};
     };
     xhttp.open("POST", "../quotes.txt", true);
-    xhttp.send(JSON.stringify({'#message'}));
+    xhttp.send(JSON.stringify(`$#message`));
   });
 });
 
