@@ -8,8 +8,8 @@ $(document).ready(function () {
     		}
     	};
     };
-    xhttp.open("GET", "../quotes.txt", true);
-    xhttp.send();
+    xhttp.open("POST", "../quotes.txt", true);
+    xhttp.send(JSON.stringify({'#message'}));
   });
 });
 
