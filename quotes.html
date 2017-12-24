@@ -6,7 +6,13 @@
 
 <body>
   <script src="js/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/quotes_answer.js"></script>
+  <!--<script type="text/javascript" src="js/quotes.js"></script>-->
+  <script type="text/javascript">
+    $('#message').on('click', function() {
+      $('#newQuote').html("Here is the message");
+    });
+  </script>
+
   <div class="quote">
 
     <div id="message">
