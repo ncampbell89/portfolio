@@ -10,16 +10,17 @@
   font-size: 30px;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  color: #63cc26;
+  color: #737373;
 }
 
 span {
   font-size: 12pt;
+  font-style: italic;
 }
 
 button {
   background-color: #63cc26;
-  color: #000;
+  color: #ffffff;
   font-size: 14pt;
   padding: 10px;
   border: 0px;
