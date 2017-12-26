@@ -21,9 +21,9 @@ btn.addEventListener("click", function() {
 
 function renderHTML(arr) {
     var out = "";
-    var counter = 0;
     
-    for (i = 0; i < arr.length; i++) {
+    for (var i = 0; i < arr.length; i++) {
+        var counter = 0;
         counter++;
         out += "<p>" + arr[i][counter].quote + "<br>" + arr[i][counter].name + "</p>";
     } 
