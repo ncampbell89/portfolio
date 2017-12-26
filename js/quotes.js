@@ -23,6 +23,7 @@ function renderHTML(arr) {
     var out = "";
     
     for (i = 0; i < arr.length; i++) {
+        arr[i].name.css("font-size", "12px");
         out += "<p>" + arr[i].quote + "<br>" + arr[i].name + "</p>";
     }   
     container.insertAdjacentHTML('beforeend', out);
