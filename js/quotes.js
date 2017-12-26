@@ -23,7 +23,7 @@ function renderHTML(arr) {
     var out = "";
     
     for (var i = 0; i < arr.length; i++) {
-        out += "<p>" + arr[i].quote + "<br>" + arr[i].name + "</p>";
+        out += "<p>" + '"' + arr[i].quote + '"' + "<span>" + arr[i].name + "</span>" + "</p>";
     } 
       
     container.insertAdjacentHTML('beforeend', out);
