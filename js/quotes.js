@@ -21,10 +21,14 @@ btn.addEventListener("click", function() {
 
 function renderHTML(arr) {
     var out = "";
+    var counter = 0;
     
-    for (i = 1; i < arr.length; i++) {
-        out += "<p>" + arr[i].quote + "<br>" + arr[i].name + "</p>";
+    for (i = 0; i < arr.length; i++) {
+        counter++;
+        out += "<p>" + arr[i][counter].quote + "<br>" + arr[i][counter].name + "</p>";
     } 
+
+    if (counter > arr.length) {counter = 0};
       
     container.insertAdjacentHTML('beforeend', out);
 };
