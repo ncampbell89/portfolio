@@ -25,8 +25,6 @@ function renderHTML(arr) {
     for (var i = 0; i < arr.length; i++) {
         out += "<p>" + arr[i].quote + "<br>" + arr[i].name + "</p>";
     } 
-
-    if (counter > arr.length) {counter = 0};
       
     container.insertAdjacentHTML('beforeend', out);
 };
