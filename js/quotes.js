@@ -3,7 +3,7 @@ var btn = document.getElementById("btn");
 
 btn.addEventListener("click", function() {
     var request = new XMLHttpRequest();
-    request.open('GET', 'https://raw.githubusercontent.com/ncampbell89/portfolio/gh-pages/js/quotes.json', success);
+    request.open('GET', 'https://raw.githubusercontent.com/ncampbell89/portfolio/gh-pages/js/quotes.json');
     request.onload = function() {
         if (request.status >= 200 && request.status < 400) {
             var data = JSON.parse(request.responseText);
