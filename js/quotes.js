@@ -22,7 +22,7 @@ btn.addEventListener("click", function() {
 function renderHTML(arr) {
     var out = "";
     
-    for (i = 0; i < arr.length; i++) {
+    for (i = 1; i < arr.length; i++) {
         out += "<p>" + arr[i].quote + "<br>" + arr[i].name + "</p>";
     } 
       
