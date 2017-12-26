@@ -1,6 +1,7 @@
 var container = document.getElementById("message");
+var btn = document.getElementById("btn");
 
-$('#newQuote').on("click", function() {
+btn.addEventListener("click", function() {
     var request = new XMLHttpRequest();
     request.open('GET', 'https://raw.githubusercontent.com/ncampbell89/portfolio/gh-pages/js/quotes.json', success);
     request.onload = function() {
