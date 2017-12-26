@@ -23,9 +23,7 @@ function renderHTML(arr) {
     var out = "";
     
     for (var i = 0; i < arr.length; i++) {
-        var counter = 0;
-        counter++;
-        out += "<p>" + arr[i][counter].quote + "<br>" + arr[i][counter].name + "</p>";
+        out += "<p>" + arr[i].quote + "<br>" + arr[i].name + "</p>";
     } 
 
     if (counter > arr.length) {counter = 0};
