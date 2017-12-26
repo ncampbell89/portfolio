@@ -1,7 +1,3 @@
-body {
-  background-color: #63cc26;
-}
-
 .quote {
   background-color: #ffffff;
   margin: 0 auto;
@@ -23,7 +19,7 @@ span {
 
 button {
   background-color: #63cc26;
-  color: #fff;
+  color: #000;
   font-size: 14pt;
   padding: 10px;
   border: 0px;
