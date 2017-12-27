@@ -19,7 +19,7 @@ btn.addEventListener("click", function() {
     request.send();
 })
 
-forEach(function renderHTML(arr) {
+function renderHTML(arr) {
     var out = "";
     
     for (var i = 0; i < arr.length; i++) {
@@ -27,5 +27,5 @@ forEach(function renderHTML(arr) {
     } 
       
     container.insertAdjacentHTML('beforeend', out);
-});
+};
 
