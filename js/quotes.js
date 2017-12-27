@@ -19,7 +19,7 @@ btn.addEventListener("click", function() {
     request.send();
 })
 
-request.forEach(function renderHTML(arr) {
+forEach(function renderHTML(arr) {
     var out = "";
     
     for (var i = 0; i < arr.length; i++) {
