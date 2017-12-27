@@ -19,13 +19,13 @@ btn.addEventListener("click", function() {
     request.send();
 })
 
-function renderHTML(arr) {
+request.forEach(function renderHTML(arr) {
     var out = "";
     
     for (var i = 0; i < arr.length; i++) {
-        out += "<p>" + '"' + arr[i].quote[0] + '"' + "<span>" + arr[i].name[0] + "</span>" + "</p>";
+        out += "<p>" + '"' + arr[i].quote + '"' + "<span>" + arr[i].name + "</span>" + "</p>";
     } 
       
     container.insertAdjacentHTML('beforeend', out);
-};
+});
 
