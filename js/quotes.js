@@ -25,6 +25,9 @@ function renderHTML(arr) {
     for (var i = 0; i < arr.length; i++) {
         out += "<p>" + '"' + arr[i].quote + '"' + "<span>" + arr[i].name + "</span>" + "</p>";
     } 
+
+    var randomNumber = Math.floor(Math.random() * (data.length));
+    document.getElementById('quoteDisplay').innerHTML = data[randomNumber];
       
     container.insertAdjacentHTML('beforeend', out);
 };
