@@ -1,7 +1,7 @@
 var container = document.getElementById("message");
 var btn = document.getElementById("btn");
 
-btn.addEventListener("click", function() {
+function newQuote() {
     var request = new XMLHttpRequest();
     request.open('GET', 'https://raw.githubusercontent.com/ncampbell89/portfolio/gh-pages/js/quotes.json');
     request.onload = function() {
@@ -17,7 +17,7 @@ btn.addEventListener("click", function() {
     };
 
     request.send();
-})
+};
 
 function renderHTML(arr) {
     var out = "";
