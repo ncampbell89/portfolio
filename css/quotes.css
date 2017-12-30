@@ -1,17 +1,40 @@
 body {
-  background-image: url("images/forest.jpg");
+  background-image: url("forest.jpg");
+  margin: 0px;
+}
+
+.header_bkgrd {
+	background-color: #63cc2675;
+	padding-top: 1px;
+    padding-bottom: 1px;
+}
+
+hr {
+	border: none;
+	background-color: #e91e1e;
+	height: 3px;
+	margin: 0px;
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Calligraffitti', cursive;
   text-align: center;
+  color: #ffffff;
+  text-shadow: 2px 2px 2px #000;
+  font-size: 3.5em;
+  letter-spacing: 3px;
+  margin-top: 50px;
 }
 
 #quoteDisplay {
   font-size: 30px;
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  color: #737373;
+  color: #fff;
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  top: 129px;
 }
 
 span {
@@ -20,17 +43,17 @@ span {
 }
 
 button {
-  background-color: #63cc26;
+  background-color: #e91e1e;
   color: #ffffff;
   font-size: 14pt;
   padding: 10px;
   border: 0px;
   margin: 0 auto;
   position: relative;
-  top: 26px;
-  left: 260px;
+  top: 221px;
+  left: 573px;
 }
 
 button:hover {
-  background-color: #63cc2666;
+  background-color: #e91e1e75;
 }
