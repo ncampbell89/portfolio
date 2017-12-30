@@ -2,7 +2,7 @@ var quotes = [
 	'"Whatever the mind of man can conceive and believe, it can achieve." - Napoleon Hill',
 	'"Life is about making an impact, not making an income." - Kevin Kruse',
 	'"Strive not to be a success, but rather to be of value." - Albert Einstein',
-	'"You miss 100% of the shots you don’t take." - Wayne Gretzky',
+	'"You miss 100% of the shots you don\’t take." - Wayne Gretzky',
 	'"Every strike brings me closer to the next home run." - Babe Ruth',
 	'"Only I can change my life. No one else can do it for me." - Carol Burnett',
 	'"Life is 10% what happens to you and 90% how you react to it." - Charles R. Swindoll',
