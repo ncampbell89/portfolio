@@ -120,7 +120,7 @@ button.c {
 .temperature {
   position: absolute;
   top: 38px;
-  left: 72px;
+  left: 65px;
   z-index: 7;
   width: 109px;
   min-height: 28px;
