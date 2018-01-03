@@ -162,6 +162,12 @@ span {
   padding-top: 30px;
 }
 
+.weather {
+  position: relative;
+  left: 44px;
+  padding-top: 30px;
+}
+
 #sm_contact {
   display: none;
 }
