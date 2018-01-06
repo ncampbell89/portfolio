@@ -168,6 +168,12 @@ span {
   padding-top: 30px;
 }
 
+.viewer {
+  position: relative;
+  left: 44px;
+  padding-top: 30px;
+}
+
 #sm_contact {
   display: none;
 }
@@ -245,6 +251,33 @@ textarea[placeholder] {
 
   .sticky-header {
     width: 100%;
+  }
+
+  .oil {
+    position: relative;
+    left: 54px;
+    padding-top: 30px;
+    width: 400px;
+    height: 275px;
+    margin-top: 3px;
+  }
+
+  .quote {
+    position: relative;
+    left: 11px;
+    padding-top: 30px;
+    width: 400px;
+    height: 275px;
+    margin-top: 3px;
+  }
+
+  .weather {
+    position: relative;
+    left: 54px;
+    padding-top: 30px;
+    width: 400px;
+    height: 275px;
+    top: 11px;
   }
 
   #contact_form {
