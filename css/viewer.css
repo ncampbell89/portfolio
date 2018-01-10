@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-	max-width: 1280px;
+	max-width: 1248px;
 	border: 3px solid #000;
 	background-image: url(Wikipedia.png);
 	margin: 0 auto;
@@ -15,12 +15,12 @@ p {
 	font-size: 20pt;
 }
 
-a {
+.random a {
 	text-decoration: none;
 	color: #000;
 }
 
-a:visited {
+.random a:visited {
 	color: #000;
 }
 
@@ -35,19 +35,52 @@ a:visited {
 	font-size: 12pt;
 	padding: 8px;
 	position: relative;
-    left: 459px;
+    left: 448px;
 }
 
 #search {
 	margin-bottom: 34px;
+	width: 100%;
 }
 
 .x {
 	font-size: 18pt;
 	position: relative;
 	float: right;
-	right: 433px;
+	right: 418px;
     top: -66px;
     width: 20px;
     height: 20px;
+}
+
+#output ul {
+	padding-right: 15px;
+}
+
+#output li {
+	list-style-type: none;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-right: 40px;
+}
+
+#output li a {
+	font-size: 18pt;
+	color: #2d12c5;
+	text-decoration: none;
+}
+
+#output p {
+	text-align: left;
+	font-size: 14pt;
+}
+
+#output li:last-child {
+	border: 0px;
+}
+
+hr {
+	position: relative;
+	top: 9px;
+	border: solid 1px #afb0b1;
 }
