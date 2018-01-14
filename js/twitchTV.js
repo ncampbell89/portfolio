@@ -1,66 +1,67 @@
 $(document).ready(function() {
-	var following = [];
-	//Stream info and status api call
-	var url = "https://wind-bow.glitch.me/twitch-api/streams/freecodecamp";
-	$.getJSON(url, function(data1){
-		if (data1.stream === null) {
-			$("#status").html("Free Code Camp is currently offline.")
-		} else {
-			$("#status").html("Free Code Camp is currently online.")
+	// var following = [];
+	// Stream info and status api call
+	$.ajax({
+		type: 'GET',
+		url: "https://wind-bow.glitch.me/twitch-api/streams/freecodecamp",
+		headers: {
+			'Client-ID': 'wsbuj09kwsrey6ok93h1dkgvryqco8'
+		},
+		success: function(data1) {
+			if (data1.stream === null) {
+				$("#status").html("Free Code Camp is currently OFFLINE.");
+			} else {
+				$("#status").html("Free Code Camp is currently LIVE.");
+			}
 		}
 	});
 
-	var followerURL = "https://wind-bow.glitch.me/twitch-api/users/freecodecamp/follows/channels";
-	$.getJSON(followerURL, function(data2){
-		for (var i=0; i < data2.follows.length; i++) {
-			var displayName = data2.follows[i].channel.display_name;
-			following.push(displayName);
-		}
-		following.push('comster404');
-		following.push('brunofin');
-		following.push('ESL_SC2');
+	$.ajax({
+		type: 'GET',
+		url: "https://wind-bow.glitch.me/twitch-api/users/freecodecamp/follows/channels",
+		headers: {
+			'Client-ID': 'wsbuj09kwsrey6ok93h1dkgvryqco8'
+		},
+		success: function(data2) {
+			for (var i = 0; i < data2.follows.length; i++) {
+				//gets display name
+				var name = data2.follows[i].channel.display_name;
+				var logo = data2.follows[i].channel.logo;
+				var status = data2.follows[i].channel.status;
+				var link = "https://www.twitch.tv/"+name;
 
-		for (var i=0; i < following.length; i++) {
-			var url2 = "https://wind-bow.glitch.me/twitch-api/users/"+following[i]+"/follows/channels";
-
-			$.getJSON(url2).done(function(data3) {
-				var logo;
-				var status;
-				var name;
-
-				if (data3.error) {
+				if (logo == null) {
 					logo = "images/do_not.png";
-					name = data3.message;
-					status = data3.error;
-
-					$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" +
-						"<img src='"+logo+"' width='70' height='70'>" +
-						"</div>" + "<div class='col-md-4'>" + name + "</div>" + "<div class='col-md-4'>" + status +
-						"</div></div>" + "<br>");
 				}
-
-				if (data3.stream===null) {
-					$.getJSON(data3._links.self, function(data5){
-						console.log(data5.follows[0].channel.display_name);
-					});
-				}
-			});
-		}
-
-		for (var i=0; i < following.length; i++) {
-			var onlineURL = "https://wind-bow.glitch.me/twitch-api/users/"+following[i]+"/follows/channels";
-			$.getJSON(onlineURL, function(data4) {
-				var logo2 = data4.follows[0].channel.logo;
-
-				var status2 = data4.follows[0].channel.status;
-
-				var name2 = data4.follows[0].channel.name;
 
 				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" +
-						"<img src='"+logo2+"' width='70' height='70'>" +
-						"</div>" + "<div class='col-md-4'>" + name2 + "</div>" + "<div class='col-md-4'>" + status2 +
-						"</div></div>" + "<br>");
-			});
+					"<a href='"+link+"'>"+ "<img src='"+logo+"' width='70' height='70'>" + "</a>" +
+					"</div>" + "<div class='col-md-4'>" + name + "</div>" + "<div class='col-md-4'>" + status +
+					"</div></div>" + "<br>");
+			}
 		}
 	});
+
+	var deletedFollowers = ['brunofin', 'comster404'];
+	for (var i = 0; i < deletedFollowers.length; i++) {
+		$.ajax({
+			type: 'GET',
+			url: 'https://wind-bow.glitch.me/twitch-api/streams/'+deletedFollowers[i],
+			header: {
+				'Client-ID': 'wsbuj09kwsrey6ok93h1dkgvryqco8'
+			},
+			error: function(data3) {
+				var logo = "images/do_not.png";
+				var name = data3.statusText;
+				var status = data3.status;
+				var link = "https://www.twitch.tv/"+name;
+
+				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" +
+					"<a href='"+link+"'>"+ "<img src='"+logo+"' width='70' height='70'>" + "</a>" +
+					"</div>" + "<div class='col-md-4'>" + name + "</div>" + "<div class='col-md-4'>" + status +
+					"</div></div>" + "<br>");
+			}
+		});
+	}
+
 });

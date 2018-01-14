@@ -14,6 +14,9 @@ $(document).ready(function() {
 				dataType: "json",
 				success: function(data) {
 					//console.log(data);
+					// 1. Title
+					// 2. Description
+					// 3. Link
 					$('#output').html('');
 					for (var i = 0; i < data[1].length; i++) { 
 						$('#output').prepend("<li><a href="+data[3][i]+">"+data[1][i]+"</a><p>"+data[2][i]+"</p><hr></li>");
