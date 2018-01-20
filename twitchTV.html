@@ -2,19 +2,22 @@
 <html>
 <head>
 	<title>Twitch TV Streams</title>
-	<!--<link rel="stylesheet" type="text/css" href="css/twitchTV.css">-->
 	<link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/twitchTV.css">
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+	<!--<script type="text/javascript" src="js/CORS.js"></script>-->
 	<script type="text/javascript" src="js/twitchTV.js"></script>
 </head>
 <body>
 	<div class="container">
-		<div id="header" class="text-center">
-			<h1>TwitchTV Streamer</h1>
-			<h2>By: Nicole C.</h2>
-			<a href="https://www.twitch.tv/freecodecamp" target="blank">
-				<h3 id="status"></h3>
-			</a>
+		<div class="row">
+			<div id="header" class="text-center">
+				<h1>TwitchTV Streamer</h1>
+				<h2>By: Nicole C.</h2>
+				<a href="https://www.twitch.tv/freecodecamp" target="blank">
+					<h3 id="status"></h3>
+				</a>
+			</div>
 		</div>
 
 		<div class="row">
@@ -28,7 +31,7 @@
 				Status:
 			</div>
 		</div><!--row-->
-		<br>
+
 		<div id="followerInfo"></div>
 	</div><!--container-->
 </body>
