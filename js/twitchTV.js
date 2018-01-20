@@ -3,9 +3,9 @@ $(document).ready(function() {
 	// Stream info and status api call
 	$.ajax({
 		type: 'GET',
-		url: "https://wind-bow.glitch.me/twitch-api/streams/freecodecamp",
+		url: "https://api.twitch.tv/kraken/streams/freecodecamp",
 		headers: {
-			'Client-ID': 'wsbuj09kwsrey6ok93h1dkgvryqco8'
+			'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
 		},
 		success: function(data1) {
 			if (data1.stream === null) {
@@ -18,9 +18,9 @@ $(document).ready(function() {
 
 	$.ajax({
 		type: 'GET',
-		url: "https://wind-bow.glitch.me/twitch-api/users/freecodecamp/follows/channels",
+		url: "https://api.twitch.tv/kraken/users/freecodecamp/follows/channels/",
 		headers: {
-			'Client-ID': 'wsbuj09kwsrey6ok93h1dkgvryqco8'
+			'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
 		},
 		success: function(data2) {
 			for (var i = 0; i < data2.follows.length; i++) {
@@ -28,40 +28,51 @@ $(document).ready(function() {
 				var name = data2.follows[i].channel.display_name;
 				var logo = data2.follows[i].channel.logo;
 				var status = data2.follows[i].channel.status;
-				var link = "https://www.twitch.tv/"+name;
 
 				if (logo == null) {
 					logo = "images/do_not.png";
 				}
 
-				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" +
-					"<a href='"+link+"'>"+ "<img src='"+logo+"' width='70' height='70'>" + "</a>" +
+				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" + "<a href='https://www.twitch.tv/"+name+"'>" +
+					"<img src='"+logo+"' width='70' height='70'>" + "</a>" +
 					"</div>" + "<div class='col-md-4'>" + name + "</div>" + "<div class='col-md-4'>" + status +
-					"</div></div>" + "<br>");
+					"</div></div>");
 			}
+			streams();
 		}
 	});
 
-	var deletedFollowers = ['brunofin', 'comster404'];
-	for (var i = 0; i < deletedFollowers.length; i++) {
+function streams() {
+	var followers = $("#followerInfo");
+	for(var i = 0; i < followers.length; i++) {
 		$.ajax({
 			type: 'GET',
-			url: 'https://wind-bow.glitch.me/twitch-api/streams/'+deletedFollowers[i],
-			header: {
-				'Client-ID': 'wsbuj09kwsrey6ok93h1dkgvryqco8'
+			url: 'https://api.twitch.tv/kraken/streams/',
+			headers: {
+				'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
+			},
+			success: function(data4) {
+				$("#followerInfo .row").css({"padding-top": "10px", "padding-bottom": "10px"});
+
+				if (data4.stream === null) /*offline*/ {
+					$("#followerInfo .row").css("background-color", "#ff6666");
+				} else if (data4.stream !== null) /*online*/ {
+					$("#followerInfo .row").css("background-color", "#00cc44");
+				}
 			},
 			error: function(data3) {
 				var logo = "images/do_not.png";
 				var name = data3.statusText;
 				var status = data3.status;
-				var link = "https://www.twitch.tv/"+name;
 
-				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" +
-					"<a href='"+link+"'>"+ "<img src='"+logo+"' width='70' height='70'>" + "</a>" +
+				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" + "<a href='https://www.twitch.tv/"+name+"'>" +
+					"<img src='"+logo+"' width='70' height='70'>" + "</a>" +
 					"</div>" + "<div class='col-md-4'>" + name + "</div>" + "<div class='col-md-4'>" + status +
-					"</div></div>" + "<br>");
+					"</div></div>");
 			}
 		});
 	}
+};
+
 
 });
