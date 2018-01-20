@@ -1,7 +1,48 @@
 body {
-	background-color: #b9b9b9;
+	background-color: #ff80ff;
+}
+
+.container {
+	padding: 0px !important;
+	max-width: 1100px !important;
+	margin-top: 50px;
+	margin-bottom: 50px;
 }
 
 h1 {
 	font-family: Arial;
+}
+
+#header {
+	padding: 15px;
+	background-color: yellow;
+	width: 1170px;
+	border-top: outset 3px;
+}
+
+.row {
+	border-left: outset 3px;
+	border-right: outset 3px;
+}
+
+.row:nth-child(2) {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #fff;
+}
+
+#followerInfo .row:last-child {
+	border-bottom: solid #9a9a9a;
+}
+
+#followerInfo .row {
+	border-bottom: solid yellow;
+}
+
+hr {
+	background-color: #ff80ff;
+	margin: 0px !important;
+	width: 100%;
+	border-left: outset 3px;
+	border-right: outset 3px;
 }
