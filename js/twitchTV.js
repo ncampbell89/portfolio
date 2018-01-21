@@ -47,7 +47,7 @@ function streams() {
 	for(var i = 0; i < followers.length; i++) {
 		$.ajax({
 			type: 'GET',
-			url: 'https://api.twitch.tv/kraken/streams/',
+			url: 'https://api.twitch.tv/kraken/streams/freecodecamp',
 			headers: {
 				'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
 			},
