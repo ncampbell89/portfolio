@@ -1,20 +1,23 @@
 $(document).ready(function() {
-	var following = [];
+	var following = ['restreamio', 'septiess', 'vihart', 'frinlet', 'Dr4xell',
+	'ExtremeModeration', 'noobs2ninjas', 'eisighul', 'SYNTAG', 'MeteorDev'];
 	// Stream info and status api call
-	$.ajax({
-		type: 'GET',
-		url: "https://api.twitch.tv/kraken/streams/freecodecamp",
-		headers: {
-			'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
-		},
-		success: function(data1) {
-			if (data1.stream === null) {
-				$("#followerInfo .row").css("background-color", "#ff6666;");
-			} else {
-				$("#followerInfo .row").css("background-color", "#00cc44");
+	for (var i = 0; i < following.length; i++) {
+		$.ajax({
+			type: 'GET',
+			url: "https://api.twitch.tv/kraken/streams/"+following[i],
+			headers: {
+				'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
+			},
+			success: function(data1) {
+				if (data1.stream === null) {
+					$("#followerInfo .row").css("background-color", "#ff6666;");
+				} else {
+					$("#followerInfo .row").css("background-color", "#00cc44");
+				}
 			}
-		}
-	});
+		});
+	}
 
 	$.ajax({
 		type: 'GET',
