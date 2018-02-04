@@ -1,77 +1,57 @@
-$(document).ready(function() {
-	var following = ['restreamio', 'septiess', 'vihart', 'frinlet', 'Dr4xell',
-	'ExtremeModeration', 'noobs2ninjas', 'eisighul', 'SYNTAG', 'MeteorDev'];
-	// Stream info and status api call
-	for (var i = 0; i < following.length; i++) {
-		$.ajax({
-			type: 'GET',
-			url: "https://api.twitch.tv/kraken/streams/"+following[i],
-			headers: {
-				'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
-			},
-			success: function(data1) {
-				if (data1.stream === null) {
-					$("#followerInfo .row").css("background-color", "#ff6666;");
-				} else {
-					$("#followerInfo .row").css("background-color", "#00cc44");
-				}
-			}
-		});
-	}
+// Client ID = pqnxt79n3bxumafxsa83plmihlaqqe
+/* ['restreamio', 'septiess', 'vihart', 'frinlet', 'Dr4xell',
+'ExtremeModeration', 'noobs2ninjas', 'eisighul', 'SYNTAG', 'MeteorDev']*/
+//https://api.twitch.tv/kraken/channels/freecodecamp?client_id=pqnxt79n3bxumafxsa83plmihlaqqe
 
-	$.ajax({
-		type: 'GET',
-		url: "https://api.twitch.tv/kraken/users/freecodecamp/follows/channels/",
-		headers: {
-			'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
-		},
-		success: function(data2) {
-			for (var i = 0; i < data2.follows.length; i++) {
-				//gets display name
-				var displayName = data2.follows[i].channel.display_name;
-				var logo = data2.follows[i].channel.logo;
-				var status;
+$(function() {
+	var streams = ['restreamio', 'septiess', 'vihart', 'frinlet', 'Dr4xell', 'ExtremeModeration', 'noobs2ninjas', 'eisighul', 'SYNTAG', 'MeteorDev'];
 
-				if (logo == null) {
-					logo = "images/do_not.png";
-				}
-
-				if (status === null) {
-					status = "Offline";
-				} else {
-					status = data2.follows[i].channel.status;
-					$("followerInfo .row").addClass("online");
-				}
-
-				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" + "<a href='https://www.twitch.tv/"+name+"'>" +
-					"<img src='"+logo+"' width='70' height='70'>" + "</a>" +
-					"</div>" + "<div class='col-md-4'>" + displayName + "</div>" + "<div class='col-md-4'>" + status +
-					"</div></div>");
-			}
-			//streams();
+	$.getJSON('https://api.twitch.tv/kraken/streams/freecodecamp?client_id=pqnxt79n3bxumafxsa83plmihlaqqe').done(function(data){
+		//console.log(data);
+		if (data.stream === null) {
+			$('#status').html('Free Code Camp is offline');
+		} else {
+			$('#status').html('Free Code Camp is LIVE!');
 		}
 	});
+	// JSON is for the information we get back. Shorthand for the ajax
+	// ajax is the request we make
 
-var deletedFollowers = ['brunofin', 'comster404'];
-	for(var i = 0; i < deletedFollowers.length; i++) {
+	for (var i = 0; i < streams.length; i++) {
 		$.ajax({
 			type: 'GET',
-			url: 'https://api.twitch.tv/kraken/streams/'+deletedFollowers[i],
+			url: 'https://api.twitch.tv/kraken/channels/'+ streams[i],
 			headers: {
-				'Client-ID': 'pqnxt79n3bxumafxsa83plmihlaqqe'
+				'client-ID':'pqnxt79n3bxumafxsa83plmihlaqqe'
 			},
-			error: function(data3) {
-				var logo = "images/do_not.png";
-				var displayName = data3.statusText;
-				var status = data3.status;
-				console.log(data3.statusText);
+			success: function(dataI) {
+				//console.log(dataI);
+				var name = dataI._links.self.slice(38);
+				var logo = dataI.logo;
+				var status = dataI.status;
 
-				$("#followerInfo").prepend("<div class='row'>" + "<div class='col-md-4'>" + "<a href='https://www.twitch.tv/"+name+"'>" +
-					"<img src='"+logo+"' width='70' height='70'>" + "</a>" +
-					"</div>" + "<div class='col-md-4'>" + displayName + "</div>" + "<div class='col-md-4'>" + status +
-					"</div></div>");
+				// dataI.name is from the channels url
+				$.getJSON('https://api.twitch.tv/kraken/streams/'+ dataI.name +'?client_id=pqnxt79n3bxumafxsa83plmihlaqqe').done(function(data2){
+					//console.log(data2);
+
+					//console.log(name);
+					if (data2.stream === null) {
+						$('#followerInfo').append("<div class='row'>" + "<div class='col-md-4'>" + "<a href='https://www.twitch.tv/"+name+"'>" +
+						"<img src='"+logo+"' width='70' height='70'>" + "</a>" +
+						"</div>" + "<div class='col-md-4'>" + name + "</div>" + "<div class='col-md-4'>" + status +
+						"</div></div>");
+					} else {
+						$('#followerInfo').append("<div class='row' style='background-color:#00cc44;'>" + "<div class='col-md-4'>" + "<a href='https://www.twitch.tv/"+name+"'>" +
+						"<img src='"+logo+"' width='70' height='70'>" + "</a>" +
+						"</div>" + "<div class='col-md-4'>" + name + "</div>" + "<div class='col-md-4'>" + status +
+						"</div></div>");
+					}
+				});
+
+			},
+			error: function(err) {
+				alert("Error: User not found");
 			}
 		});
-	}
-
-});
+	};
+})
