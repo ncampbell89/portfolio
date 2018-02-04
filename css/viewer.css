@@ -41,6 +41,8 @@ p {
 #search {
 	margin-bottom: 34px;
 	width: 100%;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .x {
@@ -83,4 +85,10 @@ hr {
 	position: relative;
 	top: 9px;
 	border: solid 1px #afb0b1;
+}
+
+@media (max-width: 1024px) {
+	.lookup {
+		left: 408px;
+	}
 }
