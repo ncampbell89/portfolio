@@ -150,6 +150,25 @@ span {
   left: 0px !important;
 }
 
+.case_study {
+    width: 450px;
+    padding: 10px;
+    background-color: #e177e5;
+    margin-left: 44px;
+    position: relative;
+    bottom: 1px;
+    text-align: center;
+}
+
+.case_study a {
+  color: #000;
+}
+
+.case_study a:hover {
+  color: #ededed;
+  text-decoration: none;
+}
+
 .oil {
   position: relative;
   left: 44px;
