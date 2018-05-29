@@ -937,8 +937,8 @@ textarea[placeholder] {
 
   h1 {
     top: 1.1rem;
-    font-size: 3.5rem !important;
-    padding-left: 120px !important;
+    font-size: 3rem !important;
+    padding-left: 3.7em !important;
   }
 
   .row {
@@ -970,14 +970,14 @@ textarea[placeholder] {
 
   #burgerDiv {
     visibility: visible;
-    right: 30px;
+    right: 20px !important;
   }
 
   .burger {
         visibility: visible;
         position: absolute;
         top: 0;
-        right: 70px;
+        /*right: 70px;*/
         margin-top: 2.25em;
         width: 44px;
         height: 44px;
