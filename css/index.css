@@ -791,7 +791,7 @@ textarea[placeholder] {
   }
 
   h1 {
-    left: -275px;
+    left: -317px;
   }
 
   .row {
@@ -831,9 +831,9 @@ textarea[placeholder] {
         position: absolute;
         top: 0;
         right: 70px;
-        margin-top: 2em;
-        width: 44px;
-        height: 44px;
+        margin-top: 2.2em;
+        width: 2.75rem;
+        height: 2.75rem;
         background-color: #CCC;
         border: 1px solid #000;
         border-radius: 10px;
@@ -988,7 +988,7 @@ textarea[placeholder] {
     
     #burger-toggle:checked + .col-sm-6 nav {
         visibility: visible;
-        width: 102.5% !important;
+        width: 103.85% !important;
         background-color: #dda8de;
         top: 14px;
         transition: 1s;
