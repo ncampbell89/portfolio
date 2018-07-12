@@ -1,0 +1,286 @@
+@charset "utf-8";
+
+/* Global */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font: normal 16px sans-serif;
+	color: #555;
+}
+
+section {
+	padding: 125px 100px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+ul, nav {
+    list-style: none;
+}
+
+/* Header */
+
+.logo {
+	width: 100px;
+	height: auto;
+	filter: brightness(125%) drop-shadow(2px 2px 2px black);
+}
+
+header {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 35px 100px 0;
+	color: #fff;
+	animation: 1.5s fadeIn .5s forwards; /* duration, name, delay, fill-mode */
+	opacity: 0;
+}
+
+header nav {
+    display: flex;
+/*    flex-direction: row;*/
+}
+
+header nav li {
+    margin: 0 15px;
+}
+
+header h2 {
+	text-transform: uppercase;
+	font-weight: 300;
+}
+
+header nav {
+	display: flex;
+	justify-content: flex-end;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+header a {
+	color: inherit;
+	text-decoration: none;
+	opacity: 0.8;
+	transition: opacity 0.2s;
+}
+
+header a:hover {
+	opacity: 1;
+    cursor:pointer;
+}
+
+section:nth-child(even):not(#intro) {
+	background-color: #EEE;
+}
+
+section h3.title {
+	font: bold 30px 'Montserrat', sans-serif;
+	text-align: center;
+}
+
+section hr {
+	border: solid 2px rgb(114, 149, 239);
+	width: 10rem;
+	margin: 2rem 0;
+}
+
+section p {
+	font-size: 1.25em;
+    line-height: 3rem;
+}
+
+/* Intro section */
+#intro {
+	position: relative;
+	justify-content: center;
+	text-align: center;
+	min-height: 100vh;
+	color: #FFF;
+	box-shadow: inset 0px 0px 10px #000;
+}
+
+.background {
+	width: 100%;
+	height: auto;
+}
+
+#intro .background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	transform: rotate(180deg);
+	filter: blur(3px);
+}
+
+#intro .background::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(114, 149, 239, 0.4);
+}
+
+#intro h1, #intro h3 {
+	filter: drop-shadow(2px 2px 2px #000);
+}
+
+#intro h1 {
+	font: bold 60px 'Montserrat', sans-serif;
+	margin-bottom: 15px;
+	animation: 2s fadeIn 1s forwards;
+	opacity: 0;
+}
+
+#intro h3 {
+	font-family: bold 28px 'Montserrat', sans-serif;
+	margin-bottom: 40px;
+	animation: 2s fadeIn 1s forwards;
+	opacity: 0;
+}
+
+/* Portfolio section */
+#portfolio hr {
+	margin-bottom: 2.5em;
+}
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+/* Contact section */
+.contactWrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+#contact form {
+  padding-top: 30px;
+  flex-basis: 50%;
+}
+
+#message{
+  height: 100px !important;
+  padding: 10px !important;
+  border: 0px !important;
+  border-bottom: 1px solid #000 !important; 
+}
+
+input {
+  width: 80%;
+  border: 0px !important;
+  border-bottom: 1px solid #000 !important;
+  font-size: 1.125rem;
+  padding: 10px !important;
+}
+
+textarea {
+	font-size: 1.125rem;
+	width: 80%;
+}
+
+#contact p {
+  font-size: 15pt;
+  padding-top: 22px;
+  padding-left: 20px;
+  padding-right: 60px;
+  top: 0px !important;
+  flex-basis: 50%;
+}
+
+button {
+	font-size: 1.125rem;
+	padding: 9px;
+	background-color: rgb(114, 149, 239);
+	color: #fff;
+	border-radius: 5px;
+	border: 0px;
+}
+
+button:hover {
+	background-color: rgb(242, 141, 15);
+}
+
+/* Footer section */
+footer {
+	display: flex;
+	background-color: #485573;
+	color: #fff;
+	padding: 60px 0;
+	justify-content: center;
+}
+
+footer ul {
+	display: flex;
+	align-items: center;
+}
+
+footer ul li:first-child {
+	margin-right: 2.5em;
+}
+
+footer ul li {
+	margin: 0 8px;
+}
+
+footer i {
+	font-size: 2rem;
+}
+
+footer a {
+	color: inherit;
+	opacity: 0.8;
+	transition: opacity 0.2s;
+	text-decoration: none;
+}
+
+footer a:hover {
+	opacity: 1;
+}
+
+footer a[id="about"]:target ~ section#about {
+	transform: translateY(-500px);
+}
+
+@media (max-width: 873px) {
+	#contact p {
+		font-size: 12pt;
+		line-height: 2.5rem;
+	}
+}
+
+@media (max-width: 690px) {
+	#intro h1 {
+		font-size: 50px;
+	}
+
+	#intro h1, #intro h3 {
+		top: 56px;
+	}
+}
