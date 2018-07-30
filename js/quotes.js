@@ -1,34 +1,36 @@
-var container = document.getElementById("message");
-var btn = document.getElementById("btn");
+//function renderHTML(arr) {
+//    var output = "";
+//    
+//    for (var i = 0; i < arr.length; i++) {
+//        output += `"${arr[i].quote}" -${arr[i].author}`;
+//    } 
+//
+//    var randomNumber = Math.floor(Math.random() * (arr.length));
+//    document.getElementById('quoteDisplay').innerHTML = arr[randomNumber];
+//      
+//    container.insertAdjacentHTML('beforeend', output);
+//};
 
-function newQuote() {
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://raw.githubusercontent.com/ncampbell89/portfolio/gh-pages/js/quotes.json');
-    request.onload = function() {
-        if (request.status >= 200 && request.status < 400) {
-            var data = JSON.parse(request.responseText);
-            renderHTML(data);
-        } else {
-            console.log("We connected to the server but it returned an error.");
-        }
-    };
-    request.onerror = function() {
-        console.log("Connection error");
-    };
+const xhr = new XMLHttpRequest();
+let sentences = [];
 
-    request.send();
-};
+xhr.onreadystatechange = function() {
+    if(this.status == 200 && this.readyState == 4) {
+        sentences.push(this.responseText);
+        JSON.parse(sentences);
+        console.log(sentences);
+        displayQuotes();
+    }
+}
 
-function renderHTML(arr) {
-    var out = "";
-    
-    for (var i = 0; i < arr.length; i++) {
-        out += "<p>" + '"' + arr[i].quote + '"' + "<span>" + arr[i].name + "</span>" + "</p>";
-    } 
+xhr.open('GET', 'js/quotes.json', true);
+xhr.send();    
 
-    var randomNumber = Math.floor(Math.random() * (data.length));
-    document.getElementById('quoteDisplay').innerHTML = data[randomNumber];
-      
-    container.insertAdjacentHTML('beforeend', out);
-};
+
+function displayQuotes() {
+    for(let i = 0; i < sentences.length; i++) {
+        let output = document.getElementById('quoteDisplay');
+        output.innerHTML = `${sentences[i].quote} -${sentences[i].author}`;
+    }
+}
 
