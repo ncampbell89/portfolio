@@ -26,9 +26,12 @@ ul, nav {
 /* Header */
 
 .logo {
-	width: 100px;
+	width: 125px;
 	height: auto;
 	filter: brightness(125%) drop-shadow(2px 2px 2px black);
+    position: absolute;
+    top: 2em;
+    left: 4em;
 }
 
 header {
@@ -63,6 +66,10 @@ header h2 {
 header nav {
 	display: flex;
 	justify-content: flex-end;
+	font-size: 1.25em;
+	position: absolute;
+    top: 4em;
+    right: 4em;
 }
 
 @keyframes fadeIn {
@@ -86,7 +93,23 @@ header a:hover {
     cursor:pointer;
 }
 
-section:nth-child(even):not(#intro) {
+#menu {
+	display: none;
+}
+
+#burger {
+	display: none;
+}
+
+#buttons {
+	display: none;
+}
+
+#cross {
+	display: none;
+}
+
+section:nth-child(odd) {
 	background-color: #EEE;
 }
 
@@ -104,10 +127,10 @@ section hr {
 section p {
 	font-size: 1.25em;
     line-height: 3rem;
+    /*padding: 0 3em;*/
 }
 
-/* Intro section */
-#intro {
+header {
 	position: relative;
 	justify-content: center;
 	text-align: center;
@@ -121,7 +144,7 @@ section p {
 	height: auto;
 }
 
-#intro .background {
+header .background {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -133,7 +156,7 @@ section p {
 	filter: blur(3px);
 }
 
-#intro .background::after {
+header .background::after {
 	content: '';
 	position: absolute;
 	top: 0;
@@ -145,22 +168,26 @@ section p {
 	background-color: rgba(114, 149, 239, 0.4);
 }
 
-#intro h1, #intro h3 {
+header h1, header h3 {
 	filter: drop-shadow(2px 2px 2px #000);
 }
 
-#intro h1 {
-	font: bold 60px 'Montserrat', sans-serif;
+header h1 {
+	font: bold 8em 'Montserrat', sans-serif;
 	margin-bottom: 15px;
 	animation: 2s fadeIn 1s forwards;
 	opacity: 0;
 }
 
-#intro h3 {
+header h3 {
 	font-family: bold 28px 'Montserrat', sans-serif;
 	margin-bottom: 40px;
 	animation: 2s fadeIn 1s forwards;
 	opacity: 0;
+}
+
+h3#greeting {
+	font-size: 2.5em;
 }
 
 /* Portfolio section */
@@ -174,13 +201,18 @@ section p {
 	justify-content: center;
 }
 
+.gallery a img {
+	width: 450px;
+	height: 300px;
+}
+
 /* Contact section */
 .contactWrapper {
 	display: flex;
 	flex-direction: row;
 }
 
-#contact form {
+#big_contact form {
   padding-top: 30px;
   flex-basis: 50%;
 }
@@ -205,7 +237,7 @@ textarea {
 	width: 80%;
 }
 
-#contact p {
+#big_contact p {
   font-size: 15pt;
   padding-top: 22px;
   padding-left: 20px;
@@ -268,19 +300,243 @@ footer a[id="about"]:target ~ section#about {
 	transform: translateY(-500px);
 }
 
-@media (max-width: 873px) {
-	#contact p {
+#sm_contact {
+	display: none;
+}
+
+@media screen and (max-width: 873px) {
+	/* Contact Section */
+	#big_contact {
+		display: none;
+	}
+
+	#big_contact p {
 		font-size: 12pt;
 		line-height: 2.5rem;
 	}
-}
 
-@media (max-width: 690px) {
-	#intro h1 {
-		font-size: 50px;
+	section {
+		padding: 85px 100px;
 	}
 
-	#intro h1, #intro h3 {
-		top: 56px;
+	section h3.title {
+		font-size: 27px;
+	}
+
+	section#sm_contact {
+		display: flex;
+		justify-content: center;
+		background-color: white;
+	}
+
+	.sm_contactWrapper {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	#sm_message {
+	  height: 100px !important;
+	  padding: 10px !important;
+	  border: 0px !important;
+	  border-bottom: 1px solid #000 !important; 
+	}
+
+	input {
+	  border: 0px !important;
+	  border-bottom: 1px solid #000 !important;
+	  padding-top: 20px !important;
+	}
+
+	input, textarea {
+		width: 22em;
+		font-size: 1.5rem;
+	}
+
+	.sm_contactWrapper button {
+		font-size: 1.5rem;
+		padding: 9px;
+		background-color: rgb(114, 149, 239);
+		color: #fff;
+		border-radius: 5px;
+		border: 0px;
+	}
+
+	.sm_contactWrapper button:hover {
+		background-color: rgb(242, 141, 15);
+	}
+
+	section#sm_contact p {
+		margin-bottom: 20px;
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+	#intro h1 {
+		font: 7em;
+	}
+
+	h3#greeting {
+		font-size: 2em;
+	}
+
+	h3.title {
+		font-size: 27px;
+	}
+
+	.clockGreet {
+		margin-top: 54px;
+	}
+
+	section {
+		padding: 80px;
+	}
+
+	section#about p {
+		padding: 0;
+	}
+
+	section#sm_contact {
+		padding: 80px;
+	}
+
+	input, textarea {
+		width: 21em;
+	}
+
+}
+
+@media screen and (max-width: 600px) {
+	header nav {
+		display: none;
+	}
+
+	#buttons {
+		display: block;
+		position: absolute;
+    	top: 5rem;
+    	right: 5rem;
+	}
+
+	#burger {
+		display: block;
+	}
+
+	#menu {
+		display: none;
+		background-color: #EEE;
+		color: #000;
+		text-align: center;
+		position: absolute;
+	    right: 80px;
+	    top: 110px;
+	    z-index: 1;
+	    border-radius: 5px;
+	}
+
+	#menu li {
+		padding: 15px;
+	}
+
+	#cross {
+		display: none;
+	}
+
+	header h1 {
+		font-size: 7em;
+	}
+
+	section p {
+		font-size: 1.125em;
+	}
+
+	section h3.title {
+		font-size: 27px;
+	}
+
+	section#sm_contact p {	
+	    width: 100%;
+	    line-height: 2.5rem;
+	    margin-bottom: 20px;
+	}
+
+	input, textarea {
+		width: 25.5em;
+		font-size: 1em;
+		padding-top: 10px !important;
+	}
+
+	.sm_contactWrapper button {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 448px) {
+	.logo {
+		width: 105px;
+		top: 2em;
+		left: 2.5em;
+	}
+
+	#buttons {
+		top: 4rem;
+		right: 4rem;
+	}
+
+	header h1 {
+		font-size: 5.5em;
+	}
+
+	h3#greeting {
+		font-size: 1.5em;
+	}
+
+	section {
+		padding: 45px 60px;
+	}
+
+	section h3.title {
+		font-size: 25px;
+	}
+
+	.gallery a img {
+		width: 100%;
+		height: auto;
+	}
+
+	input, textarea {
+		width: 18em;
+	}
+}
+
+@media screen and (max-width: 398px) {
+	header {
+		padding: 35px 50px 0;
+	}
+
+	.logo {
+		width: 95px;
+	}
+
+	#buttons {
+		top: 3.5rem;
+		right: 3rem;
+	}
+
+	section h3.title {
+		font-size: 20px;
+	}
+
+	section p {
+		font-size: 0.8em;
+		line-height: 2.5rem;
+	}
+
+	input, textarea {
+		font-size: 0.8em;
+	}
+
+	footer {
+		font-size: 0.8em;
 	}
 }
