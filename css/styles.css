@@ -372,6 +372,10 @@ footer a[id="about"]:target ~ section#about {
 }
 
 @media screen and (max-width: 700px) {
+	#menu {
+		display: none;
+	}
+
 	#intro h1 {
 		font: 7em;
 	}
@@ -414,8 +418,9 @@ footer a[id="about"]:target ~ section#about {
 	#buttons {
 		display: block;
 		position: absolute;
-    	top: 5rem;
-    	right: 5rem;
+    	top: 3rem;
+    	right: 3rem;
+    	color: #EEE;
 	}
 
 	#burger {
@@ -428,8 +433,8 @@ footer a[id="about"]:target ~ section#about {
 		color: #000;
 		text-align: center;
 		position: absolute;
-	    right: 80px;
-	    top: 110px;
+	    right: 48px;
+	    top: 78px;
 	    z-index: 1;
 	    border-radius: 5px;
 	}
@@ -483,6 +488,12 @@ footer a[id="about"]:target ~ section#about {
 		right: 4rem;
 	}
 
+	#menu {
+		position: absolute;
+		right: 64px !important;
+		top: 93px !important;
+	}
+
 	header h1 {
 		font-size: 5.5em;
 	}
@@ -509,7 +520,11 @@ footer a[id="about"]:target ~ section#about {
 	}
 }
 
-@media screen and (max-width: 398px) {
+@media screen and (max-width: 385px) {
+	h1 {
+		font-size: 5em;
+	}
+
 	header {
 		padding: 35px 50px 0;
 	}
@@ -521,6 +536,12 @@ footer a[id="about"]:target ~ section#about {
 	#buttons {
 		top: 3.5rem;
 		right: 3rem;
+	}
+
+	#menu {
+		position: absolute;
+    	right: 48px !important;
+    	top: 85px !important;
 	}
 
 	section h3.title {
