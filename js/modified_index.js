@@ -115,6 +115,18 @@ function myTime() {
 setInterval(myTime, 1000);
 
 
+var contact = document.getElementById('contactForm');
+var url = contact.attr('action');
+
+const xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+	if (xhr.status == 200 && xhr.readyState == 4) {
+		contact.text(xhr.responseText);
+	}
+}
+xhr.open('POST', url, true);
+xhr.send();
+
 
 
 
