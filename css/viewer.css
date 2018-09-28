@@ -39,8 +39,7 @@ p {
     justify-content: center;
 }
 
-.x {
-    font-size: 18pt;
+.back {
     position: relative;
     float: right;
     right: -10px;

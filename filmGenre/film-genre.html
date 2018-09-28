@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>JS Film Genre Voting App</title>
+  
+  <style>
+  
+    body{
+      background-color: #123;
+      font-family: sans-serif;
+      color: #153;
+    }
+    #wrapper{
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "banner"
+        "action"
+        "animation"
+        "biography"
+        "comedy"
+        "drama"
+        "family"
+        "horror"
+        "musical"
+        "mystery"
+        "romance"
+        "scifi"
+        "sports"
+        "aside";
+      background-color: #600;
+      width: 95%;
+      min-height: 90vh;
+      margin: 0 auto;
+      padding: 1rem;
+      text-align:center;
+    }
+    #banner {
+      grid-area: banner;
+      background-image: url(images/popcorn-vote-logo.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 222px;
+    }
+    aside{
+      grid-area: aside;
+      background-color: #8ee;
+      overflow-y: scroll;
+    }
+    aside div{ 
+      background-color: rgba(24, 222, 22, 0.3);
+      padding: 2px 0 0 10px;
+      border-bottom: 2px solid yellowgreen;
+      box-shadow: 2px 2px 2px darkolivegreen;
+    }
+    h4{
+      font-size: 12px;
+      display: inline-block;
+      padding: 2px;
+      width: 20%;
+    }
+    p{
+      display: inline-block;
+      padding: 2px;
+      margin-left: 10%;
+    }
+    aside div p{
+      font-size: .8rem;
+    }
+    
+    
+    .vote-bar{
+          display: block;
+          padding: 0px;
+          height: 25px;
+          width: 1px;
+          margin: 0;
+          background-color: rgba(244, 244, 11, 0.6);
+          box-shadow: 2px 2px 2px darkgreen;
+        }
+        
+        .genre-btn{
+          width: 206px;
+          height: 259px;
+          margin: 5px auto;
+          border-radius: 10px;
+          cursor: pointer;
+          background-position: left;
+          background-size: cover;
+        }
+        
+        #action{
+          grid-area: action;
+          background-image: url(images/btns/btn-action-1.png);
+        }
+        #action:hover{
+          background-image: url(images/btns/btn-action-2.png);
+        }
+        #animation{
+          grid-area: animation;
+          background-image: url(images/btns/btn-animation-1.png);
+        }
+        #animation:hover{
+          background-image: url(images/btns/btn-animation-2.png);
+        }
+        #comedy{
+          grid-area: comedy;
+          background-image: url(images/btns/btn-comedy-1.png);
+        }
+        #comedy:hover{
+          background-image: url(images/btns/btn-comedy-2.png);
+        }
+        #drama{
+          grid-area: drama;
+          background-image: url(images/btns/btn-drama-1.png);
+        }
+        #drama:hover{
+          background-image: url(images/btns/btn-drama-2.png);
+        }
+        #family{
+          grid-area: family;
+          background-image: url(images/btns/btn-family-1.png);
+        }
+        #family:hover{
+          background-image: url(images/btns/btn-family-2.png);
+        }
+        #horror{
+          grid-area: horror;
+          background-image: url(images/btns/btn-horror-1.png);
+        }
+        #horror:hover{
+          background-image: url(images/btns/btn-horror-2.png);
+        }
+        #mystery{
+          grid-area: mystery;
+          background-image: url(images/btns/btn-mystery-1.png);
+        }
+        #mystery:hover{
+          background-image: url(images/btns/btn-mystery-2.png);
+        }
+        #romance{
+          grid-area: romance;
+          background-image: url(images/btns/btn-romance-1.png);
+        }
+        #romance:hover{
+          background-image: url(images/btns/btn-romance-2.png);
+        }
+        #scifi{
+          grid-area: scifi;
+          background-image: url(images/btns/btn-scifi-1.png);
+        }
+        #scifi:hover{
+          background-image: url(images/btns/btn-scifi-2.png);
+        }
+        #biography{
+          grid-area: biography;
+          background-image: url(images/btns/btn-biography-1.png);
+        }
+        #biography:hover{
+          background-image: url(images/btns/btn-biography-2.png);
+        }
+        #musical{
+          grid-area: musical;
+          background-image: url(images/btns/btn-musical-1.png);
+        }
+        #musical:hover{
+          background-image: url(images/btns/btn-musical-2.png);
+        }
+        #sports{
+          grid-area: sports;
+          background-image: url(images/btns/btn-sports-1.png);
+        }
+        #sports:hover{
+          background-image: url(images/btns/btn-sports-2.png);
+        }
+        
+        @media screen and (min-width: 600px){
+          #wrapper{
+            grid-template-columns: 1fr 1fr 2fr;
+            grid-template-areas:
+            "banner banner aside"
+            "action animation aside"
+            "biography comedy aside"
+            "drama family aside"
+            "horror musical aside"
+            "mystery romance aside"
+            "scifi sports aside";
+          }
+			
+			aside {
+				height: 55%;
+			}
+        }/* Add the 3 new buttons/genres (biography, musical, sports) as well as 3 button per row layout/media query and 4 button per row layout/media query. Make sure they appear in the 1/2 column layouts as well. */
+  
+        @media screen and (min-width: 800px){
+          #wrapper{
+            grid-template-columns: 1fr 1fr 1fr 3fr;
+            grid-template-areas:
+            "banner banner banner aside"
+            "action animation biography aside"
+            "comedy drama family aside "
+            "horror musical mystery aside"
+            "romance scifi sports aside";
+            width:90%;
+          
+          }
+          .genre-btn{
+            width: 145px;
+            height: 180px;
+          }
+        }
+        @media screen and (min-width: 1100px){
+          #wrapper{
+            grid-template-columns: 1fr 1fr 1fr 1fr 3fr;
+            grid-template-areas:
+            "banner banner banner banner aside"
+            "action animation biography comedy aside"
+            "drama family horror musical aside "
+            "mystery romance scifi sports aside";
+            width:90%;
+          
+          }
+          .genre-btn{
+            width: 120px;
+            height: 152px;  
+          }
+        }
+  </style>
+  
+  
+</head>
+<body>
+
+  <div id="wrapper">
+  
+    <div id="banner"></div>
+    
+<!--
+    <div id="action" class="genre-btn" onclick="logVote()" value="0"></div>
+    <div id="animation" class="genre-btn" onclick="logVote()"></div>
+    <div id="biography" class="genre-btn" onclick="logVote()"></div>
+    <div id="comedy" class="genre-btn" onclick="logVote()"></div>
+    <div id="drama" class="genre-btn" onclick="logVote()"></div>
+    <div id="family" class="genre-btn" onclick="logVote()"></div>
+    <div id="horror" class="genre-btn" onclick="logVote()"></div>
+    <div id="musical" class="genre-btn" onclick="logVote()"></div>
+    <div id="mystery" class="genre-btn" onclick="logVote()"></div>
+    <div id="romance" class="genre-btn" onclick="logVote()"></div>
+    <div id="scifi" class="genre-btn" onclick="logVote()"></div>
+    <div id="sports" class="genre-btn" onclick="logVote()"></div>
+-->
+    
+    <aside>
+      <div>
+        <h2>Total Votes:  <span id="total-votes"></span></h2>
+      </div>
+      
+      <div>
+        <h4>Action</h4>
+        <p id="action-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="action-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Animation</h4>
+        <p id="animation-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="animation-bar"></div>
+      </div>
+      <div>
+        <h4>Biography</h4>
+        <p id="biography-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="biography-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Comedy</h4>
+        <p id="comedy-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="comedy-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Drama</h4>
+        <p id="drama-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="drama-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Family</h4>
+        <p id="family-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="family-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Horror</h4>
+        <p id="horror-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="horror-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Musical</h4>
+        <p id="musical-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="musical-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Mystery</h4>
+        <p id="mystery-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="mystery-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Romance</h4>
+        <p id="romance-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="romance-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Sci-Fi</h4>
+        <p id="scifi-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="scifi-bar"></div>
+      </div>
+      
+      <div>
+        <h4>Sports</h4>
+        <p id="sports-votes">
+            0 votes &nbsp; 0.00%
+        </p>
+        <div class="vote-bar" id="sports-bar"></div>
+      </div>
+      
+    </aside>
+  
+  </div>
+  
+  <script src="genreVotingApp.js"></script>
+  
+  
+</body>
+
+
+
+
+</html>

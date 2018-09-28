@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JavaScript Calculator</title>
+        <style>
+            body {
+                background-color: #123;
+                margin: 2em;
+            }
+            
+            .boxy {
+                width: 300px;
+                height: 450px;
+                margin: 24px auto;
+                padding: 24px;
+                background-color: #ABC;
+                color: #123;
+                font-family: sans-serif;
+                font-weight: bold;
+                border-radius: 15px;
+                border: 5px solid #88A;
+                text-align: justify;
+            }
+            
+            #inputBox {
+                font-size: 1.5rem;
+                background-color: lightyellow;
+                border: 3px solid orange;
+                color: darkorange;
+                padding: 5px 10px;
+                border-radius: 5px;
+                margin: 2em .6em 1em;
+                width: 250px;
+            }
+            
+            button {
+                padding: 4px 14px;
+                border-radius: 5px;
+                background-color: orange;
+                color: azure;
+                font-weight: bold;
+                font-size: 2rem;
+                margin: 1rem;
+                box-shadow: 5px 5px 5px #888;
+                cursor: pointer;
+            }
+            
+            #outputBox {
+                margin: 0.6em;
+                font-size: 1.7em;
+                color: #2196f3;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div class="boxy" id="calculator">
+            <!--calculator screen-->
+            <input type="number" id="inputBox">
+
+            <!--operator buttons-->
+            <button onclick="operate('+')">+</button>
+            <button onclick="operate('-')">-</button>
+            <button onclick="operate('*')">X</button>
+            <button onclick="operate('/')">&divide;</button>
+            <button onclick="operate('**')">^</button>
+            <button onclick="operate('%')">Mod</button>
+
+            <!--action buttons-->
+            <button onclick="calculate()">=</button>
+            <button onclick="clearAll()">Clr</button>
+
+            <!--result output-->
+            <div id="outputBox">Answer: </div>
+        </div>
+        
+        <script>
+            var num1 = 0;
+            var num2 = 0;
+            var result = 0;
+            var operator = '';
+            var isOper = false;
+            var inputBox = document.getElementById('inputBox');
+            
+            // focus on the input right on page load
+            inputBox.focus();
+            
+            function operate(op) {
+                // get the number entered, convert it to a number type
+                num1 = Number(inputBox.value);
+                
+                // clear the input, so the user can enter the second number
+                inputBox.value = '';
+                
+                //save the operator used into a global variable, accessible to the calcluate function.
+                operator = op;
+                
+                // focus on the input right on page load for the user to enter the second number
+                inputBox.focus();
+                
+                // set the isOper boolean so the calculate function can do its work
+                isOper = true;
+            }
+            
+            function calculate() {
+                if(isOper) { // shorthand for 'isOper == true'
+                    // get the second number entered, convert it to a number type
+                    num2 = Number(inputBox.value);
+
+                    // clear the input, so the user can enter the second number
+                    inputBox.value = '';
+
+                    // Calculate the result. Look for the operator saved in the operate function. 
+//                    if(operator == '+') {
+//                       result = num1 + num2; 
+//                    } else if(operator == '-') {
+//                       result = num1 - num2; 
+//                    } else if(operator == '*') {
+//                        result = num1 * num2;
+//                    } else if(operator == '/') {
+//                        result = num1 / num2;
+//                    } else if(operator == '**') {
+//                        result = num1 ** num2;
+//                    } else {
+//                        // then it must be the %
+//                        result = num1 % num2;
+//                    }
+                    
+                    // alternative way to get the result
+                    result = eval(num1 + operator + num2);
+
+                    //put focus back on input, for the user to start the next operation
+                    inputBox.focus();
+
+                    // output the result
+                    document.getElementById('outputBox').innerHTML = 'Answer: ' + result;
+                    document.getElementById('calculator').style.borderColor = 'white';
+                }
+                isOper = false;
+            }
+            
+            function clearAll() {
+                num1 = 0;
+                num2 = 0;
+                result = 0;
+                operator = '';
+                document.getElementById('outputBox').innerHTML = 'Answer: ';
+                isOper = false;
+                document.getElementById('calculator').style.borderColor = '';
+                inputBox.focus();
+            }
+        </script>
+    </body>
+</html>
