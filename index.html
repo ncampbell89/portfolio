@@ -3,12 +3,19 @@
 
 <head>
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    
 	<title>Nicole's Portfolio</title>
+    
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+	<link rel="icon" type="image/ico" href="images/logo.png" />
+    
 	<link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 </head>
@@ -17,13 +24,19 @@
 
 	<header>
 		<img class="logo" src="images/logo.png">
+		
 		<nav>
 			<li><a href="#about">About</a></li>
 			<li><a href="#portfolio">Portfolio</a></li>
-			<li><a href="#big_contact">Contact</a></li>
+			<li><a href="#contact">Contact</a></li>
 		</nav>
-
-
+		
+<!--
+		<div id="temp">
+			<p id="temperature" onload="myForecast()"></p>
+			<button class="f degree">&deg;F</button>
+		</div>
+-->
 
 		<div id="buttons">
 			<div id="burger"><i class="fas fa-bars" style="font-size:2em" aria-hidden="true"></i></div>
@@ -33,87 +46,193 @@
 		<nav id="menu">
 			<li><a href="#about">About</a></li><hr>
 			<li><a href="#portfolio">Portfolio</a></li><hr>
-			<li><a href="#sm_contact">Contact</a></li>
-		</nav>		
+			<li><a href="#contact">Contact</a></li>
+		</nav>	
 	
-		<div class="background" style="background-image: url(images/code.jpg)"></div>
 		<div class="clockGreet">
 			<h1 id="clock"></h1>
 			<h3 id="greeting"></h3>
 		</div>
 
 	</header>
+	
+	<div class="background" id="background"></div>
 
 	<section id="about">
-		<h3 class="title">About Nicole</h3>
-		<hr>
-		<p>Nicole is a diligent individual who is passionate about graphic and web design. She looks forward to different challenges she faces in any industry. Her proficiency is in HTML, CSS, JavaScript, jQuery, JSON and AJAX. She is also familiar with Python, Ruby and SQL. With these skills, she is progressing her portfolio by utilizing these resources: YouTube, freecodecamp.org and w3schools.org. Nicole is aggressively pursuing her ambition to become a successful candidate for her dream job.</p>
+		<div class="sticky_header">
+			<h3 class="title">About Me</h3>
+			<div class="line"><hr></div>
+		</div>
+		
+		<div class="description">
+			<img class="me" src="images/My_photo.png">
+			<p>I am a diligent individual who is passionate about web design and development. I look forward to different challenges I face in any industry. With these skills, I am progressing my portfolio by utilizing these resources: freecodecamp.org, w3schools.org, and YouTube. I am actively pursuing my ambition to become a successful candidate for my dream job.</p>
+		</div>
+		
+		<div id="skills">
+			<h3>Proficiency Levels</h3>
+			<br><br>
+			<ul>
+				<li>HTML5:
+					<div class="bar">
+						<div class="filler" style="width:100%"></div>
+					</div>
+				</li>
+				<li>CSS3: 
+					<div class="bar">
+						<div class="filler" style="width:90%"></div>
+					</div>
+				</li>
+				<li>JS: 
+					<div class="bar">
+						<div class="filler" style="width:85%"></div>
+					</div>
+				</li>
+				<li>jQuery: 
+					<div class="bar">
+						<div class="filler" style="width:90%"></div>
+					</div>
+				</li>
+				<li>JSON: 
+					<div class="bar">
+						<div class="filler" style="width:85%"></div>
+					</div>
+				</li>
+				<li>AJAX: 
+					<div class="bar">
+						<div class="filler" style="width:80%"></div>
+					</div>
+				</li>
+				<li>SQL: 
+					<div class="bar">
+						<div class="filler" style="width:85%"></div>
+					</div>
+				</li>
+				<li>PHP: 
+					<div class="bar">
+						<div class="filler" style="width:80%"></div>
+					</div>
+				</li>
+			</ul>
+		</div>
 	</section>
 
 	<section id="portfolio">
-		<h3 class="title">Portfolio</h3>
-		<hr>
+		<div class="sticky_header">
+			<h3 class="title">Portfolio</h3>
+			<div class="line"><hr></div>
+		</div>
+		
 		<div class="gallery">
-			<a href="zodiacGame/zodiac.html" alt="Chinese Zodiac Game" target="_blank">
-				<img src="images/chineseGame.png">
-			</a>
-			<a href="twitchTV.html" alt="Twitch TV" target="_blank">
-	          <img class="twitch" src="images/twitchTV.png">
-	        </a>
+            
+            <div>
+                <a href="LoftyHeights/index.php" alt="Lofty Heights Residential Search" target="_blank">
+                    <img src="images/loftyHeights.png">
+                </a>               
 
-	        <a href="viewer.html" alt="Wikipedia Viewer" target="_blank">
-    			<img class="viewer" src="images/lookup.png">
-    		</a>
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/LoftyHeights')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
+            
+            <div>
+                <a href="zodiacGame/zodiac.html" alt="Chinese Zodiac Game" target="_blank">
+                    <img class="game" src="images/chineseGame.png">
+                </a>
+                
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/chineseZodiacGame')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
+            
+            <div>
+                <a href="filmGenre/film-genre.html" alt="Film Genre Voting App" target="_blank">
+                    <img class="film" src="filmGenre/images/film.png">
+                </a>
+                
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/filmGenre')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
+            <div>
+                <a href="slideShow/slideshow.html" alt="Chinese Slideshow" target="_blank">
+                    <img class="slides" src="slideShow/chinese.png">
+                </a>
+                
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/chinesePorcelain')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
+            
+            <div>
+                <a href="calculator/calculator.html" alt="JavaScript Calculator" target="_blank">
+                    <img class="calculator" src="calculator/images/calculator.png">
+                </a>
+                
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/calculator')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
+            
+            <div>
+                <a href="twitchTV.html" alt="Twitch TV" target="_blank">
+                  <img class="twitch" src="images/twitchTV.png">
+                </a>
+            </div>
+            
+            
+            <div>
+                <a href="viewer.html" alt="Wikipedia Viewer" target="_blank">
+                    <img class="viewer" src="images/lookup.png">
+                </a>
+                
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/wikipediaViewer')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
+            <div>
+                <a href="weather-app/index.html" alt="Today's Forecast" target="_blank">
+                    <img class="weather" src="images/weather.png">
+                </a>
+            </div>
 
-    		<a href="weather-app/index.html" alt="Today's Forecast" target="_blank">
-    			<img class="weather" src="images/weather.png">
-    		</a>
+            <div>
+                <a href="quotes.html" alt="Quote Machine" target="_blank">
+                    <img class="quote" src="images/quotes.png">
+                </a>
+                
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/quoteGenerator')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
+            <div>
+                <a href="OilWebsite/index.html" alt="CureOil" target="_blank">
+                    <img class="oil" src="images/CureOil.png">
+                </a>
 
-    		<a href="quotes.html" alt="Quote Machine" target="_blank">
-    			<img class="quote" src="images/quotes.png">
-    		</a>
-
-    		<a href="http://nickiscreartion.com/OilWebsite/index.html" alt="CureOil" target="_blank">
-    			<img class="oil" src="images/CureOil.png">
-    		</a>
+                <button class="info" onclick="window.open('https://github.com/ncampbell89/cureoil')"><i class="fas fa-info-circle"></i></button>
+            </div>
+            
 		</div>
 	</section>
 
-	<section id="big_contact">
-		<h3 class="title">Contact</h3>
-		<hr>
+	<section id="contact">
+		<div class="sticky_header">
+			<h3 class="title">Contact Me</h3>
+			<div class="line"><hr></div>
+		</div>
 		<div class="contactWrapper">
-			<form id="contactForm" name="contactForm" method="post" action="formProcessor.php">
-				<input type="text" name="firstName" placeholder="First Name" required><br><br>
-				<input type="text" name="lastName" placeholder="Last Name" required><br><br>
-				<input type="text" name="company" placeholder="Company" required><br><br>
-				<input type="email" name="email" placeholder="E-Mail" required><br><br>
-				<input type="tel" name="phone" placeholder="Phone Number"><br><br>
-				<textarea name="message" id="message" rows="2" cols="39" placeholder="Message" required></textarea>
-				<br><br>
-				<button type="submit">Submit</button>
-			</form>
-			<p>Feel free to send me a message for more information about myself, my resume, or my hobbies if you like :) I will promptly respond to your message A.S.A.P.</p>
-		</div>
-	</section>
 
-	<section id="sm_contact">
-		<h3 class="title">Contact</h3>
-		<hr>
-		<div class="sm_contactWrapper">
-
-			<p>Feel free to send me a message for more information about myself, my resume, or my hobbies if you like :) I will promptly respond to your message A.S.A.P.</p><br><br>
-			<form id="sm_contactForm" name="contactForm" method="post" action="formProcessor.php">
-				<input type="text" name="firstName" placeholder="First Name" required><br><br>
-				<input type="text" name="lastName" placeholder="Last Name" required><br><br>
-				<input type="text" name="company" placeholder="Company" required><br><br>
-				<input type="email" name="email" placeholder="E-Mail" required><br><br>
-				<input type="tel" name="phone" placeholder="Phone Number"><br><br>
-				<textarea name="message" id="sm_message" rows="2" placeholder="Message" required></textarea>
+			<p class="moreInfo">Feel free to send me a message for more information about myself, my resume, or my hobbies if you like :) I will promptly respond to your message A.S.A.P.</p><br><br>
+			<form id="contactForm" name="contactForm" method="post" onsubmit="ajaxSubmit(); return false">
+				<input type="text" id="firstName" name="firstName" placeholder="First Name" required><br><br>
+				<input type="text" id="lastName" name="lastName" placeholder="Last Name" required><br><br>
+				<input type="text" id="company" name="company" placeholder="Company" required><br><br>
+				<input type="email" id="email" name="email" placeholder="E-Mail" required><br><br>
+				<input type="number" id="phone" name="phone" placeholder="Phone Number"><br><br>
+				<textarea name="message" id="message" rows="2" placeholder="Message" required></textarea>
+                
 				<br><br>
-				<button type="submit">Submit</button>
+
+                <div class="g-recaptcha" data-sitekey="6LcaaXAUAAAAAH710hUTjykuHSFEDOcZDp4ZG47j"></div>
+                
+                <button name="submit" onclick="return callValidation()">Submit</button>
 			</form>
-			
+			<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script>
+            
 		</div>
 	</section>
 
@@ -122,6 +241,11 @@
 			<li>
 				<a href="https://github.com/ncampbell89" target="_blank">
 					<i class="fab fa-github"></i>
+				</a>
+			</li>
+			<li>
+				<a href="https://linkedin.com/in/ncampbell3" target="_blank">
+					<i class="fab fa-linkedin"></i>
 				</a>
 			</li>
 			<li>
@@ -135,8 +259,9 @@
 			</li>
 		</ul>
 	</footer>
+	<script type="text/javascript" src="js/modified_index.js"></script>
 
-		<script type="text/javascript" src="js/modified_index.js"></script>
+
 </body>
 
 </html>
