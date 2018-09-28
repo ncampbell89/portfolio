@@ -4,7 +4,7 @@ $(document).ready(function () {
 	    if(window.orientation == 90) {
 
 	    	if(window.screen.height <= 448) {
-				$('h1').css("font-size", "5em");
+//				$('h1').css("font-size", "5em");
 				$('#greeting').css("font-size", "1.5em");
 				$('.clockGreet').css("margin-top", "70px");
 			}
@@ -26,22 +26,23 @@ $(document).ready(function () {
 	    	}
 
 	    } else if (window.orientation == 0) {
-	    	if (window.screen.width <= 448) {
+
+	    	if (window.screen.width <= 448) { // 448 or less
 	    		$('h1').css('font-size', '5.5em');
 	    		$('#greeting').css("font-size", "1.5em");
 	    		$('.clockGreet').css("margin-top", "54px");
 	    	}
 
-	    	if (window.screen.width <= 385) {
-	    		$('h1').css('font-size', '5em');
-	    		$('#greeting').css("font-size", "1.4em");
+	    	if (window.screen.width <= 385) { // 385 or less
+	    		$('h1').css('font-size', '4em');
+	    		$('#greeting').css("font-size", "1em");
 	    		$('.clockGreet').css("margin-top", "54px");
 	    	}
 
-	    	if(window.screen.width <= 330) {
-	    		$('h1').css('font-size', '4em');
-	    		$('#greeting').css("font-size", "1.1em");
-	    		$('.logo').css({'width':'90px', 'left':'2.5em'});
+	    	if (window.screen.width <= 330) { // 330 or less
+	    		$('h1').css('font-size', '4.5em');
+	    		$('#greeting').css("font-size", "1em");
+	    		$('.logo').css({'width':'80px', 'left':'2.5em', top: '2em'});
 	    		$('#buttons').css({'top':'3rem', 'right':'3rem'});
 	    	}
 	    }
@@ -52,8 +53,7 @@ $(document).ready(function () {
   // Initial execution if needed
   doOnOrientationChange();
 
-
-	$("#cross").hide();
+  	$("#cross").hide();
 	$("#menu").hide();
 
 	$("#burger").click(function() {
@@ -69,14 +69,36 @@ $(document).ready(function () {
 			$("#cross").hide();
 		});
 	});
+
+
+
+var x = window.matchMedia("(min-width: 600px)"); 
+
+function onMediaQuery(x) {
+    if(x.matches) { // If media query break point it hit
+        $('#burger').hide();
+		$('#menu').hide();
+		$('#cross').hide();
+    } else { // less than 600px
+		$('#burger').show();
+	}
+}
+x.addListener(onMediaQuery);
+
 });
+
+
+
+
+
+////***** THE CLOCK *****////
 
 function myTime() {
 	const d = new Date();
 
-	let hour = d.getHours();
-	let minute = d.getMinutes();
-	let second = d.getSeconds();
+	var hour = d.getHours();
+	var minute = d.getMinutes();
+	var second = d.getSeconds();
 
 	if(minute < 10) {
 		minute = '0' + minute;
@@ -84,50 +106,87 @@ function myTime() {
 	// if(second < 10) {
 	// 	second = '0' + second;
 	// }
-
-
-	let greeting = document.querySelector('#greeting');
+	var greeting = document.querySelector('#greeting');
 
 	if (hour < 12) {
-		greeting.innerHTML = 'Good Morning!';
 		if(hour == 0) {
 			hour = 12;
 		}
+//		document.getElementById('background').style("background-image: url(images/morning.jpg)")
+		greeting.innerHTML = 'Good Morning!';
 	} else if (hour < 18) {
 		hour -= 12;
+		if(hour == 0) {
+			hour = 12;
+		}	
 		greeting.innerHTML = 'Good Afternoon!';
 	} else {
 		hour -= 12;
 		greeting.innerHTML =  'Good Evening!';
 	}
 
-	// let colon = ':';
-	// colon = colon.fontsize(40);
-
+	if(second % 2 === 0) {
+		document.querySelector("#clock").innerHTML = `${hour}&#8202;:&#8202;${minute}`;
+	} else {
+		document.querySelector("#clock").innerHTML = `${hour}&nbsp;&#8202;${minute}`;
+	}
+	
+	var isFirefox = typeof InstallTrigger !== 'undefined';
+	if(isFirefox) {
 		if(second % 2 === 0) {
-			document.querySelector("#clock").innerHTML = `${hour}&#8202;:&#8202;${minute}`;
+			document.querySelector("#clock").innerHTML = `${hour}:${minute}`;
 		} else {
-			document.querySelector("#clock").innerHTML = `${hour}&nbsp;&#8202;${minute}`;
+			document.querySelector("#clock").innerHTML = `${hour} ${minute}`;
 		}
+	}
 	
 	
 }
 setInterval(myTime, 1000);
 
 
-var contact = document.getElementById('contactForm');
-var url = contact.attr('action');
 
-const xhr = new XMLHttpRequest();
-xhr.onreadystatechange = function() {
-	if (xhr.status == 200 && xhr.readyState == 4) {
-		contact.text(xhr.responseText);
-	}
+
+/////****** FOR CONTACT FORM ******/////
+
+function ajaxSubmit() {
+	let firstName = document.getElementById('firstName'),
+		lastName = document.getElementById('lastName'),
+		company = document.getElementById('company'),
+		email = document.getElementById('email'),
+		phone = document.getElementById('phone'),
+		message = document.getElementById('message');
+
+	let xhr = new XMLHttpRequest();
+	xhr.onreadystatechange = function() {      
+		if (xhr.status == 200 && xhr.readyState == 4) {          
+			document.querySelector(".moreInfo").innerHTML = xhr.responseText;
+		} 
+	} 
+    
+	xhr.open('POST', 'formProcessor.php?', true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	xhr.send("firstName=" + firstName.value + "&lastName=" + lastName.value + "&company=" + company.value + "&email=" + email.value + "&phone=" + phone.value + "&message=" + message.value);
 }
-xhr.open('POST', url, true);
-xhr.send();
+
+let onloadCallback = function() {
+    grecaptcha.render('html_element', {
+      'sitekey' : '6LcaaXAUAAAAAH710hUTjykuHSFEDOcZDp4ZG47j',
+      'success': true,
+      'challenge_ts': timestamp,  // timestamp of the challenge load (ISO format yyyy-MM-dd'T'HH:mm:ssZZ)
+      'hostname': 'www.campbellsportfolio.com'
+    });
+  };
 
 
+function callValidation() {
+    if(grecaptcha.getResponse().length == 0){
+        alert('Please click the reCAPTCHA checkbox');
+        return false;
+    } else {
+        return true;
+    }   
+}
 
 
 

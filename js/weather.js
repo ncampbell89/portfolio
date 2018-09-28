@@ -1,32 +1,42 @@
-var container = document.getElementById('local_weather');
+var x;
 
-var latitude = JSON.coord.lon;
-var longitude = JSON.coord.lat;
-
-if (navigator.geolocation) {
-	window.onload = function() {
-		var currentPosition;
-		function getCurrentLocation (position) {
-	        currentPosition = position;
-	        latitude = currentPosition.coords.latitude;
-	        longitude = currentPosition.coords.longitude;
-    	}
-	}
+if ("geolocation" in navigator) {
+	navigator.geolocation.getCurrentPosition(function(position) {
+		loadWeather(x = position.coords.latitude + ',' + position.coords.longitude);
+	});
+} else {
+	loadWeather("Kolkata, IN", ""); //if it doesn't support 'geolocation'
 }
 
-var request = new XMLHttpRequest();
-request.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lat='+latitude+'&lon='+longitude);
-request.onload = function() {
-	var data = JSON.parse(request.responseText);
-	renderHTML(data);
-}
+loadWeather(x);
 
-function renderHTML(data) {
-	var output = "";
+$(document).ready(function() {
+	loadWeather(x);
+});
 
-	for (var i = 0; i < data.length; i++) {
-		output += '<p>' + data[i] + '</p>';
-	}
+function loadWeather(location, woeid) {
+	$.simpleWeather({
+		location: location,
+		woeid: woeid,
+		unit: 'c',
+		success: function(weather) {
+			tempC = weather.temp + '&deg;';
+			tempF = Math.floor(Math.round((weather.temp * (9/5)) + 32)) + '&deg;';
+			wcode = '<img class="weathericon" src="images/weathericons/' + weather.code + '.svg">';
 
-	container.insertAdjacentHTML(output);
-}
+			$('.temperature').html(tempF);
+
+			$('.f').on('click', function() {
+				$('.temperature').html(tempF);
+			});
+
+			$('.c').on('click', function() {
+				$('.temperature').html(tempC);
+			});
+		},
+
+		error: function(error) {
+			$('.error').html('<p>' + error + '</p>');
+		}
+	});
+};

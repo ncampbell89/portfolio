@@ -1,16 +1,33 @@
-var w = document.getElementById('forecast');
+'use strict';
+var w = document.getElementById('temperature');
 
-function myForecast() {
-	var latitude = position.coords.latitude
-	var longitude = position.coords.longitude
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(myForecast);
+    } else { 
+        w.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+//function showPosition(position) {
+//    w.innerHTML = "Latitude: " + position.coords.latitude + 
+//    "<br>Longitude: " + position.coords.longitude; 
+//}
+
+function myForecast(position) {
+    var latitude = position.coords.latitude,
+	 	longitude = position.coords.longitude;
+	
+	var url = "api.openweathermap.org/data/2.5/weather?lat="+latitude+"&lon"+longitude+"&appid=ba896bc9279489205dedeaa091028a55";
 
 	var request = new XMLHttpRequest();
-	request.open('GET', 'https://fcc-weather-api.glitch.me/api/current?lon='+longitude+'&lat='+latitude);
+	
 	request.onload = function() {
 		var data = JSON.parse(request.responseText);
 		renderHTML(data);
 	}
-	request.send(null);
+	request.open('GET', url, true);
+	request.send();
 }
 
 function renderHTML(obj) {
